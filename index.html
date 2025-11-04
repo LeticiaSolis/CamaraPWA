@@ -4,56 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Captura de Cámara</title>
+    <title>PWA CAMARA</title>
     <link rel="manifest" href="manifest.json">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 20px;
-        }
-
-        #cameraContainer {
-            display: none;
-            /* Oculto inicialmente */
-            margin-top: 20px;
-        }
-
-        video,
-        canvas {
-            border: 2px solid #444;
-            border-radius: 5px;
-            width: 320px;
-            height: 240px;
-        }
-
-        #takePhoto {
-            margin-top: 10px;
-        }
-
-        #canvas {
-            display: none;
-            /* Oculto hasta capturar una foto */
-        }
-    </style>
 </head>
 
 <body>
-
-    <h1>Aplicación de Captura de Cámara</h1>
+    <h1>Capturar Foto con Cámara</h1>
 
     <button id="openCamera">Abrir Cámara</button>
+
     <div id="cameraContainer">
-        <video id="video" autoplay></video>
+        <video id="video" autoplay playsinline width="320" height="240"></video>
         <br>
         <button id="takePhoto">Tomar Foto</button>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" width="320" height="240"></canvas>
     </div>
 
-    <script src="app.js"></script>
     <script src="sw.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
