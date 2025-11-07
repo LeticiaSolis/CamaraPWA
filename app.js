@@ -14,13 +14,24 @@ async function openCamera() {
         const constraints = {
             video: {
                 facingMode: { ideal: 'environment' },
-                width: { ideal: 320 },
-                height: { ideal: 240 }
+                width: { ideal: 1280 },
+                height: { ideal: 720 }
             }
         };
 
         stream = await navigator.mediaDevices.getUserMedia(constraints);
         video.srcObject = stream;
+
+        await new Promise(resolve => {
+            video.onloadedmetadata = () => {
+                video.play();
+                resolve();
+            };
+        });
+
+        // Ajustar el canvas al tamaño real del video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
 
         cameraContainer.style.display = 'block';
         openCameraBtn.textContent = 'Cámara Abierta';
